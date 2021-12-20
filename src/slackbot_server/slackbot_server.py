@@ -120,7 +120,7 @@ def run(
 
     params['signing_secret'] = signing_secret
     params['version_number'] = version_number
-    params['slash_callback'] = command_callback
+    params['command_callback'] = command_callback
     params['interaction_callback'] = interaction_callback
     params['event_callback'] = event_callback
 
