@@ -1,2 +1,2 @@
 # slackbot_server
-Slackbot ASGI server using FastAPI and Uvicorn
+Slackbot asyncronous web server made with FastAPI and Uvicorn.
