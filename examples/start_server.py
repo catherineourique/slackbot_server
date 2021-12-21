@@ -16,7 +16,7 @@ def event_callback(payload, headers, body):
 
 server = slackbot_server.run(
     signing_secret = os.getenv('slackbot_signing_secret'),
-    port = os.getenv('slackbot_port')
+    port = os.getenv('slackbot_port'),
     command_callback = command_callback,
     interaction_callback = interaction_callback,
     event_callback = event_callback,
