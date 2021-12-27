@@ -74,7 +74,7 @@ async def index(request: Request):
     response = {}
     callback = params['command_callback']
     if callback and callable(callback):
-        response = callback(payload, headers, body)
+        response = await callback(payload, headers, body)
 
     return response
 
@@ -88,7 +88,7 @@ async def index(request: Request):
     response = {}
     callback = params['interaction_callback']
     if callback and callable(callback):
-        response = callback(payload, headers, body)
+        response = await callback(payload, headers, body)
 
     return response
 
@@ -102,7 +102,7 @@ async def index(request: Request):
     response = {}
     callback = params['event_callback']
     if callback and callable(callback):
-        response = callback(payload, headers, body)
+        response = await callback(payload, headers, body)
 
     return response
 
