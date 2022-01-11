@@ -82,9 +82,15 @@ async def index(request: Request):
 @app.post('/interaction')
 async def index(request: Request):
     headers = request.headers
+    print('SLACKBOT_SERVER_HEADERS:', headers)
     body = await request.body()
-    print('SLACKBOT_SERVER:', body)
+    print('SLACKBOT_SERVER_BODY:', body)
     payload = json.loads(parse_qs(body.decode('utf-8')).get('payload')[0])
+    print('SLACKBOT_SERVER_PAYLOAD:', payload)
+    
+    validation = await validate_request(headers, body)
+    if not validation:
+        return invalid_request
 
     response = {}
     callback = params['interaction_callback']
@@ -99,6 +105,10 @@ async def index(request: Request):
     headers = request.headers
     body = await request.body()
     payload = json.loads(body.decode('utf-8'))
+    
+    validation = await validate_request(headers, body)
+    if not validation:
+        return invalid_request
 
     response = {}
     callback = params['event_callback']
