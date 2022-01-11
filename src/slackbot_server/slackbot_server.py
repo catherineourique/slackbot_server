@@ -82,11 +82,8 @@ async def index(request: Request):
 @app.post('/interaction')
 async def index(request: Request):
     headers = request.headers
-    print('SLACKBOT_SERVER_HEADERS:', headers)
     body = await request.body()
-    print('SLACKBOT_SERVER_BODY:', body)
     payload = json.loads(parse_qs(body.decode('utf-8')).get('payload')[0])
-    print('SLACKBOT_SERVER_PAYLOAD:', payload)
     
     validation = await validate_request(headers, body)
     if not validation:
