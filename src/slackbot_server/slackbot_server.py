@@ -83,6 +83,7 @@ async def index(request: Request):
 async def index(request: Request):
     headers = request.headers
     body = await request.body()
+    print('SLACKBOT_SERVER:', body)
     payload = json.loads(parse_qs(body.decode('utf-8')).get('payload')[0])
 
     response = {}
